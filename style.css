@@ -17,4 +17,6 @@ body {
 
 .grid-item {
     /* border: 1px solid black; */
+    text-align: center;
+    user-select: none;
 }
