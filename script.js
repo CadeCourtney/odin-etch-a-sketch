@@ -1,14 +1,15 @@
 const grid = document.querySelector('.grid');
-
-
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
-let reset = document.getElementsByClassName(".reset");
-// reset.onclick = () => 
+let reset = document.getElementById("reset");
+reset.onclick = () => resetGrid();
 
 function fillGrid(size) {
-    grid.style.backgroundColor = "red";
+    while (grid.firstChild) {
+        grid.removeChild(grid.lastChild);
+    }
+    // grid.style.backgroundColor = "beige";
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
@@ -38,10 +39,15 @@ function changeColor(e) {
     e.target.style.backgroundColor = 'black';
 }
 
+function resetGrid() {
+    console.log("INSIDE RESET");
+    let size = prompt("Please enter grid size", 16);
+    fillGrid(size);
+}
+
 
 
 window.onload = () => {
     let size = prompt("Please enter grid size", 16);
     fillGrid(Number(size));
-
   }

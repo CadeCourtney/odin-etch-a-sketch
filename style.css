@@ -2,14 +2,33 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    /* background-image: url(./imgs/grey-brick-plain.jpg); */
+    /* align-items: center; */
+    background-image: url(./imgs/old-wooden-texture-background-vintage_55716-1138.jpg);
+}
+
+div {
+    font-family: serif;
+    font-style: italic;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+button {
+    font-family: sans-serif;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .border-vert {
+    display: flex;
     width: 750px;
     height: 100px;
     background-color: red;
+    justify-content: center;
+    align-items: center;
+    color: gold;
+    font-size: 50px;
+    /* font-family: 'Times New Roman', Times, serif; */
 }
 
 
@@ -35,12 +54,27 @@ body {
     border-radius: 50%
 }
 
-/* .border-hor, .border-vert {
-    border-radius: 25px;
-} */
 
 .container {
     display: flex;
+}
+
+.box {
+    display: flex;
+    width: 200px;
+    height: 600px;
+    background-color: beige;
+    flex-direction: column;
+    border-radius: 15px;
+    /* justify-content: center; */
+    align-items: center;
+    /* box-shadow: 10px 5px 5px rgba(245, 245, 220, 0.771); */
+}
+
+#middle.container {
+    margin-top: 80px;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .border-hor {
@@ -54,7 +88,7 @@ body {
     width: 550px;
     height: 500px;
     /* margin-left: 80px; */
-    /* background-color: black; */
+    background-color: beige;
     /* padding: 50px; */
     /* grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, 1fr); */
@@ -65,9 +99,16 @@ body {
     /* padding: 1px; */
     text-align: center;
     user-select: none;
-    background-color: white;;
+    background-color: beige;
 }
 
 .grid-container {
     border: 1px solid black;
+}
+
+#reset {
+    width: auto;
+    margin-top: 50px;
+    font-size: 30px;
+    font-weight: bold;
 }

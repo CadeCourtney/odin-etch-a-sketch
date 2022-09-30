@@ -8,18 +8,24 @@
   </head>
   
   <body>
-    <h1 class="header">Etch-a-sketch</h1>
-    <div class="border-vert" id="top"></div>
-    <div class="container">
-    <div class="border-hor" id="left"></div>
-    <div class="grid"></div>
-    <div class="border-hor" id="right"></div>
-  </div>
-  <div class="border-vert" id="bottom">
-    <div class="analog"></div>
-    <div class="analog"></div>
-  </div>
-  <script src="./script.js"></script>
+    <!-- <h1 class="header">Etch-a-sketch</h1> -->
+    <div class="container" id="middle">
+      <div class="box">
+        <button id="reset">Reset</button>
+      </div>
+    <div class="sketch-container">
+        <div class="border-vert" id="top">Etch-a-sketch</div>
+          <div class="container" id="sketch">
+          <div class="border-hor" id="left"></div>
+          <div class="grid"></div>
+          <div class="border-hor" id="right"></div>
+      </div>
+      <div class="border-vert" id="bottom">
+        <div class="analog" id="left"></div>
+        <div class="analog" id="right"></div>
+      </div>
+    </div>
+</div>
   </body>
-  <!-- <button class="reset">New Grid</button> -->
+  <script src="./script.js"></script>
   </html>
