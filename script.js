@@ -4,9 +4,11 @@ const grid = document.querySelector('.grid');
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
-
+let reset = document.getElementsByClassName(".reset");
+// reset.onclick = () => 
 
 function fillGrid(size) {
+    grid.style.backgroundColor = "red";
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
@@ -20,7 +22,7 @@ function fillGrid(size) {
     }
 }
 
-// click mousedown works. 
+// click mousedown works. Needed boolean value for mouseDown event.
 function changeNum(e) {
     if(e.type == 'mouseover' && false != mouseDown) {
         return;
@@ -33,8 +35,10 @@ function changeColor(e) {
     if(e.type == 'mouseover' && !mouseDown) {
         return;
     }
-    e.target.style.backgroundColor = 'red';
+    e.target.style.backgroundColor = 'black';
 }
+
+
 
 window.onload = () => {
     let size = prompt("Please enter grid size", 16);
