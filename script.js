@@ -13,7 +13,7 @@ function fillGrid(size) {
     for(var i = 0; i < size * size; i++) {
         const ele = document.createElement('div');
         ele.classList.add('grid-item');
-        ele.textContent = i;
+        // ele.textContent = i;
         ele.addEventListener('mouseover', changeColor);
         ele.addEventListener('mousedown', changeColor);
         grid.appendChild(ele);
@@ -37,5 +37,7 @@ function changeColor(e) {
 }
 
 window.onload = () => {
-    fillGrid(4);
+    let size = prompt("Please enter grid size", 16);
+    fillGrid(Number(size));
+
   }

@@ -9,14 +9,22 @@ body {
 .grid {
     display: grid;
     width: 500px;
-    height: 400px;
-    margin-left: 100px;
+    height: 550px;
+    /* margin-left: 80px; */
+    background-color: black;
+    padding: 10px;
     /* grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, 1fr); */
 }
 
 .grid-item {
     /* border: 1px solid black; */
+    /* padding: 1px; */
     text-align: center;
     user-select: none;
+    background-color: white;;
+}
+
+.grid-container {
+    border: 1px solid black;
 }
