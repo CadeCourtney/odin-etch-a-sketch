@@ -1,15 +1,23 @@
+// variables
 let size = 16;
 const grid = document.querySelector('.grid');
 let mouseDown = false;
+let rainbow = false;
+let color = "black";
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
-let reset = document.getElementById("reset");
+let colorSetting = document.getElementById("color");
+colorSetting.oninput = (e) => setColor(e.target.value);
+let resetButton = document.getElementById("reset");
 reset.onclick = () => resetGrid();
-let clear = document.getElementById("clear");
+let clearButton = document.getElementById("clear");
 clear.onclick = () => clearGrid();
-let color = document.getElementById("toggle-color");
-color.onclick = () => toggleColor();
+let rainbowButton = document.getElementById("rainbow");
+rainbowButton.onclick = () => toggleColor();
+let eraserButton = document.getElementById("eraser");
+eraserButton.onclick = () => setColor("beige");
 
+// functions
 function fillGrid(size) {
     while (grid.firstChild) {
         grid.removeChild(grid.lastChild);
@@ -28,20 +36,18 @@ function fillGrid(size) {
     }
 }
 
-// click mousedown works. Needed boolean value for mouseDown event.
-function changeNum(e) {
-    if(e.type == 'mouseover' && false != mouseDown) {
-        return;
-    }
-    e.target.textContent = e.target.textContent * 2;
-}
-
 // click mousedown works. 
 function changeColor(e) {
     if(e.type == 'mouseover' && !mouseDown) {
         return;
     }
-    e.target.style.backgroundColor = 'black';
+    if(!rainbow) {
+        e.target.style.backgroundColor = color;
+    }
+    else if(rainbow) {
+        // console.log("rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")");
+        e.target.style.backgroundColor = "rgb(" + Math.floor(Math.random() * 256) + ", " + Math.floor(Math.random() * 256) + ", " + Math.floor(Math.random() * 256) + ")"
+    }
 }
 
 function resetGrid() {
@@ -55,9 +61,28 @@ function clearGrid() {
     fillGrid(size);
 }
 
+function toggleColor() {
+    rainbow = !rainbow;
+    if(rainbow == true) {
+        rainbowButton.classList.add("toggle-color");
+    }
+    else if(rainbow == false) {
+        rainbowButton.classList.remove("toggle-color");
+    }
+}
 
+function toggleEraser() {
+    eraser = !eraser;
+    if(eraser == true) {
+
+    }
+}
+
+function setColor(value) {
+    color = value;
+}
 
 window.onload = () => {
     size = prompt("Please enter grid size", 16);
     fillGrid(Number(size));
-  }
+}
