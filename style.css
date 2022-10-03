@@ -2,7 +2,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
     background-image: url(./imgs/old-wooden-texture-background-vintage_55716-1138.jpg);
 }
 
@@ -28,7 +27,6 @@ button {
     align-items: center;
     color: gold;
     font-size: 50px;
-    /* font-family: 'Times New Roman', Times, serif; */
 }
 
 
@@ -66,9 +64,7 @@ button {
     background-color: beige;
     flex-direction: column;
     border-radius: 15px;
-    /* justify-content: center; */
     align-items: center;
-    /* box-shadow: 10px 5px 5px rgba(245, 245, 220, 0.771); */
 }
 
 #middle.container {
@@ -106,9 +102,17 @@ button {
     border: 1px solid black;
 }
 
-#reset {
+#reset, #clear, #toggle-color {
     width: auto;
-    margin-top: 50px;
+    margin-top: 30px;
     font-size: 30px;
     font-weight: bold;
+}
+
+#toggle-color {
+    /* background-image: linear-gradient(to left, violet, indigo, green, blue, yellow, orange, red);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent; */
 }

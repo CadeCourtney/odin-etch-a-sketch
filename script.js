@@ -1,9 +1,14 @@
+let size = 16;
 const grid = document.querySelector('.grid');
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 let reset = document.getElementById("reset");
 reset.onclick = () => resetGrid();
+let clear = document.getElementById("clear");
+clear.onclick = () => clearGrid();
+let color = document.getElementById("toggle-color");
+color.onclick = () => toggleColor();
 
 function fillGrid(size) {
     while (grid.firstChild) {
@@ -41,13 +46,18 @@ function changeColor(e) {
 
 function resetGrid() {
     console.log("INSIDE RESET");
-    let size = prompt("Please enter grid size", 16);
+    size = prompt("Please enter grid size", 16);
+    fillGrid(size);
+}
+
+function clearGrid() {
+    console.log("CLEAR");
     fillGrid(size);
 }
 
 
 
 window.onload = () => {
-    let size = prompt("Please enter grid size", 16);
+    size = prompt("Please enter grid size", 16);
     fillGrid(Number(size));
   }
