@@ -1,35 +1,40 @@
 // variables
 let size = 16;
 const grid = document.querySelector('.grid');
-let mouseDown = false;
-let rainbow = false;
+let boolMouseDown = false;
+let boolRainbow = false;
+let boolEraser = false;
 let color = "black";
-document.body.onmousedown = () => (mouseDown = true);
-document.body.onmouseup = () => (mouseDown = false);
+
+document.body.onmousedown = () => (boolMouseDown = true);
+document.body.onmouseup = () => (boolMouseDown = false);
+
 let colorSetting = document.getElementById("color");
 colorSetting.oninput = (e) => setColor(e.target.value);
+
 let resetButton = document.getElementById("reset");
 reset.onclick = () => resetGrid();
+
 let clearButton = document.getElementById("clear");
 clear.onclick = () => clearGrid();
+
 let rainbowButton = document.getElementById("rainbow");
 rainbowButton.onclick = () => toggleColor();
+
 let eraserButton = document.getElementById("eraser");
-eraserButton.onclick = () => setColor("beige");
+eraserButton.onclick = () => toggleEraser();
 
 // functions
 function fillGrid(size) {
     while (grid.firstChild) {
         grid.removeChild(grid.lastChild);
     }
-    // grid.style.backgroundColor = "beige";
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
     for(var i = 0; i < size * size; i++) {
         const ele = document.createElement('div');
         ele.classList.add('grid-item');
-        // ele.textContent = i;
         ele.addEventListener('mouseover', changeColor);
         ele.addEventListener('mousedown', changeColor);
         grid.appendChild(ele);
@@ -38,14 +43,16 @@ function fillGrid(size) {
 
 // click mousedown works. 
 function changeColor(e) {
-    if(e.type == 'mouseover' && !mouseDown) {
+    if(e.type == 'mouseover' && !boolMouseDown) {
         return;
     }
-    if(!rainbow) {
-        e.target.style.backgroundColor = color;
+    if(!boolRainbow && !boolEraser) {
+    e.target.style.backgroundColor = color;
     }
-    else if(rainbow) {
-        // console.log("rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")");
+    else if(boolEraser) {
+        e.target.style.backgroundColor = "beige";
+    }
+    else if(boolRainbow) {
         e.target.style.backgroundColor = "rgb(" + Math.floor(Math.random() * 256) + ", " + Math.floor(Math.random() * 256) + ", " + Math.floor(Math.random() * 256) + ")"
     }
 }
@@ -62,19 +69,13 @@ function clearGrid() {
 }
 
 function toggleColor() {
-    rainbow = !rainbow;
-    if(rainbow == true) {
+    // setColor("rgb(" + Math.floor(Math.random() * 256) + ", " + Math.floor(Math.random() * 256) + ", " + Math.floor(Math.random() * 256) + ")");
+    boolRainbow = !boolRainbow;
+    if(boolRainbow) {
         rainbowButton.classList.add("toggle-color");
     }
-    else if(rainbow == false) {
+    else if(!boolRainbow) {
         rainbowButton.classList.remove("toggle-color");
-    }
-}
-
-function toggleEraser() {
-    eraser = !eraser;
-    if(eraser == true) {
-
     }
 }
 
@@ -82,7 +83,25 @@ function setColor(value) {
     color = value;
 }
 
+function toggleEraser() {
+    boolEraser = !boolEraser;
+    if(boolEraser) {
+        eraserButton.classList.add("toggle-eraser");
+        document.body.style.cursor = "url('./imgs/cursor.cur'), auto";
+    }
+    else if(!boolEraser) {
+        eraserButton.classList.remove("toggle-eraser");
+        document.body.style.cursor = "default";
+    }
+}
+
 window.onload = () => {
     size = prompt("Please enter grid size", 16);
+    if(size > 100) {
+        size = 100;
+    }
+    if (size < 1) {
+        size = 16;
+    }
     fillGrid(Number(size));
 }
